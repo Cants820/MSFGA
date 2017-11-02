@@ -38,6 +38,7 @@ module.exports = function (app) {
 
   // POST route for saving a new post
   app.post("/user/register", function (req, res) {
+    console.log("Create postUserName");
     console.log(req.body);
     db.User.create({
       userName: req.body.userName,

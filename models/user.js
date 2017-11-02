@@ -1,31 +1,32 @@
-module.exports = function (sequelize, DataTypes) {
-  var User = sequelize.define("User", {
+var Sequelize = require("sequelize");
+module.exports = function (Sequelize, DataTypes) {
+  var User = Sequelize.define("User", {
     userName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [10]
+        len: [8, 20]
       }
     },
     password: {
-      type: DataType.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        lens: [3, 10]
+        len: [8, 100]
       }
     },
     email: {
-      type: DataType.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         isEmail: true
       }
     },
     points: {
-      type: DataType.INT,
-      allowNull: false,
+      type: DataTypes.INTEGER,
+      allowNull: true,
       validate: {
-        isNumeric: true
+        // isNumeric: true
       }
     }
   });

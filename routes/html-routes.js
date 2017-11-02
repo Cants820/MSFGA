@@ -15,9 +15,11 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../public/create.html"));
   });
 
-  app.get("/cms", function (req, res) {
+  app.get("/view", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/view.html"));
   });
 
-
+  app.get("/register", function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/register.html"));
+  });
 };
