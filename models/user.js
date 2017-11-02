@@ -1,32 +1,33 @@
 module.exports = function (sequelize, DataTypes) {
-  var Volunteer = sequelize.define("Volunteer", {
-    activity: {
+  var User = sequelize.define("User", {
+    userName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [10]
       }
     },
-    description: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      len: [10]
-    },
-    location: {
-      type: DataTypes.STRING,
+    password: {
+      type: DataType.STRING,
       allowNull: false,
       validate: {
-
+        lens: [3, 10]
       }
     },
-    date: {
-      type: DataTypes.DATE,
+    email: {
+      type: DataType.STRING,
       allowNull: false,
       validate: {
-
+        isEmail: true
       }
     },
-
+    points: {
+      type: DataType.INT,
+      allowNull: false,
+      validate: {
+        isNumeric: true
+      }
+    }
   });
-  return Volunteer;
+  return User;
 };

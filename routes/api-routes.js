@@ -5,72 +5,83 @@ var db = require("../models");
 module.exports = function (app) {
 
   // GET route for getting all of the dbName
-  app.get("/api/dbName/", function (req, res) {
-    db.dbName.findAll({})
-      .then(function (dbPost) {
-        res.json(dbPost);
+  app.get("/user/Volunteer/", function (req, res) {
+    db.Volunteer.findAll({})
+      .then(function (dbVolunteer) {
+        res.json(dbVolunteer);
       });
   });
 
   // Get route for returning dbName of a specific category
-  app.get("/api/dbName/category/:category", function (req, res) {
+  app.get("/user/Volunteer/category/:category", function (req, res) {
     db.dbName.findAll({
       where: {
-        category: req.params.category
+        activity: req.params.activity
       }
     })
-      .then(function (dbPost) {
-        res.json(dbPost);
+      .then(function (dbVolunteer) {
+        res.json(dbVolunteer);
       });
   });
 
   // Get rotue for retrieving a single post
-  app.get("/api/dbName/:id", function (req, res) {
-    db.Post.findOne({
+  app.get("/user/Volunteer/:id", function (req, res) {
+    db.Volunteer.findOne({
       where: {
         id: req.params.id
       }
     })
-      .then(function (dbPost) {
-        res.json(dbPost);
+      .then(function (dbVolunteer) {
+        res.json(dbVolunteer);
       });
   });
 
   // POST route for saving a new post
-  app.post("/api/dbName", function (req, res) {
+  app.post("/user/register", function (req, res) {
     console.log(req.body);
-    db.Post.create({
-      title: req.body.title,
-      body: req.body.body,
-      category: req.body.category
+    db.User.create({
+      userName: req.body.userName,
+      password: req.body.password,
+      email: req.body.email
     })
-      .then(function (dbPost) {
-        res.json(dbPost);
+      .then(function (dbUser) {
+        res.json(dbUser);
       });
   });
-
+  app.post("/user/event", function (req, res) {
+    console.log(req.body);
+    db.Volunteer.create({
+      activity: req.body.activity,
+      description: req.body.description,
+      location: req.body.location,
+      date: req.body.date
+    })
+      .then(function (dbVolunteer) {
+        res.json(dbVolunteer);
+      });
+  });
   // DELETE route for deleting dbName
-  app.delete("/api/dbName/:id", function (req, res) {
-    db.Post.destroy({
+  app.delete("/user/Volunteer/:id", function (req, res) {
+    db.Volunteer.destroy({
       where: {
         id: req.params.id
       }
     })
-      .then(function (dbPost) {
-        res.json(dbPost);
+      .then(function (dbVolunteer) {
+        res.json(dbVolunteer);
       });
   });
 
   // PUT route for updating dbName
-  app.put("/api/dbName", function (req, res) {
+  app.put("/user/dbName", function (req, res) {
     db.Post.update(req.body,
       {
         where: {
           id: req.body.id
         }
       })
-      .then(function (dbPost) {
-        res.json(dbPost);
+      .then(function (dbVolunteer) {
+        res.json(dbVolunteer);
       });
   });
 };
