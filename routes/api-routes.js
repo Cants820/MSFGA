@@ -5,35 +5,71 @@ var db = require("../models");
 module.exports = function (app) {
 
   // GET route for getting all of the dbName
-  app.get("/user/Volunteer/", function (req, res) {
-    db.Volunteer.findAll({})
-      .then(function (dbVolunteer) {
-        res.json(dbVolunteer);
-      });
+  app.get("/users", function (req, res) {
+    // db.Volunteer.findAll({})
+    //   .then(function (dbVolunteer) {
+    //     res.json(dbVolunteer);
+    //   });
+  // console.log("Hello world");
   });
 
   // Get route for returning dbName of a specific category
-  app.get("/user/Volunteer/category/:category", function (req, res) {
-    db.dbName.findAll({
-      where: {
-        activity: req.params.activity
-      }
-    })
-      .then(function (dbVolunteer) {
-        res.json(dbVolunteer);
-      });
+  app.get("/user/:id/edit", function (req, res) {
+    // db.dbName.findAll({
+    //   where: {
+    //     activity: req.params.activity
+    //   }
+    // })
+    //   .then(function (dbVolunteer) {
+    //     res.json(dbVolunteer);
+    //   });
+    // console.log("Hello where");
   });
 
   // Get rotue for retrieving a single post
-  app.get("/user/Volunteer/:id", function (req, res) {
-    db.Volunteer.findOne({
-      where: {
-        id: req.params.id
-      }
-    })
-      .then(function (dbVolunteer) {
-        res.json(dbVolunteer);
-      });
+  app.get("/user/:id/", function (req, res) {
+    // db.Volunteer.findOne({
+    //   where: {
+    //     id: req.params.id
+    //   }
+    // })
+    //   .then(function (dbVolunteer) {
+    //     res.json(dbVolunteer);
+    //   });
+    // console.log("Hello world");
+  });
+
+  app.get("/user/:id/events", function (req, res) {
+
+    // console.log("Hello world");
+  });
+
+  app.get("/user/:id/events/:eventid", function (req, res) {
+
+    // console.log("Hello world");
+  });
+
+  app.get("/user/:id/event/new", function (req, res) {
+
+    // console.log("Hello world");
+  });
+
+  app.get("/events", function (req, res) {
+
+    // console.log("Hello world");
+  });
+
+  app.get("/events/:id", function (req, res) {
+
+        // console.log("Hello world");
+  });
+
+  app.post("/users", function (req, res) {
+
+  });
+
+  app.post("/user/:id/event", function (req, res) {
+
   });
 
   // POST route for saving a new post
@@ -74,15 +110,23 @@ module.exports = function (app) {
   });
 
   // PUT route for updating dbName
-  app.put("/user/dbName", function (req, res) {
-    db.Post.update(req.body,
-      {
-        where: {
-          id: req.body.id
-        }
-      })
-      .then(function (dbVolunteer) {
-        res.json(dbVolunteer);
-      });
+  app.put("/user/:id/", function (req, res) {
+    // db.Post.update(req.body,
+    //   {
+    //     where: {
+    //       id: req.body.id
+    //     }
+    //   })
+    //   .then(function (dbVolunteer) {
+    //     res.json(dbVolunteer);
+    //   });
+    // console.log("Hello world");
   });
+
+  app.put("/user/:id/event/:eventid/join", function (req, res) {
+
+
+  });
+
+
 };
