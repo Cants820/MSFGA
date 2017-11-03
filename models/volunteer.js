@@ -1,16 +1,19 @@
-module.exports = function (sequelize, DataTypes) {
-  var Volunteer = sequelize.define("Volunteer", {
+var Sequelize = require("sequelize");
+
+
+module.exports = function (Sequelize, DataTypes) {
+  var Volunteer = Sequelize.define("Volunteer", {
     activity: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [10]
+        len: [5, 100]
       }
     },
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
-      len: [10]
+      len: [10, 1000]
     },
     location: {
       type: DataTypes.STRING,
@@ -19,12 +22,9 @@ module.exports = function (sequelize, DataTypes) {
 
       }
     },
-    Date: {
-      type: DataTypes.,
-      allowNull: false,
-      validate: {
-
-      }
+    date: {
+      type: DataTypes.DATE,
+      
     },
 
   });
