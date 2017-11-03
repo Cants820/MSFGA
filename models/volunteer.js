@@ -7,13 +7,13 @@ module.exports = function (Sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [10]
+        len: [5, 100]
       }
     },
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
-      len: [10]
+      len: [10, 1000]
     },
     location: {
       type: DataTypes.STRING,
@@ -24,10 +24,7 @@ module.exports = function (Sequelize, DataTypes) {
     },
     date: {
       type: DataTypes.DATE,
-      allowNull: false,
-      validate: {
-
-      }
+      
     },
 
   });

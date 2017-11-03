@@ -49,7 +49,7 @@ module.exports = function (app) {
         res.json(dbUser);
       });
   });
-  app.post("/user/event", function (req, res) {
+  app.post("/event/create", function (req, res) {
     console.log(req.body);
     db.Volunteer.create({
       activity: req.body.activity,
