@@ -29,6 +29,11 @@
       <input id="submit" type="button" value="Geocode">
     </div>
     <script>
+
+
+      var loc = [];
+      console.log(loc)
+
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 12,
@@ -37,37 +42,55 @@
         var geocoder = new google.maps.Geocoder();
 
 
-        document.getElementById('submit').addEventListener('click', function() {
+        document.getElementById('submit').addEventListener('click', function(event) {
+          event.preventDefault()
           geocodeAddress(geocoder, map);
         });
+
+        var newAutocomplete = new google.maps.places.Autocomplete(document.getElementById('address'),{types: ['geocode']});
+          // autocomplete.setComponentRestrictions({ 'country': ['us'] });
+          newAutocomplete.addListener('place_changed', () => {
+            // self.zone.run(() => {
+              // this._address = autocomplete.getPlace();
+              console.log(newAutocomplete);
+            // });
+          });
       }
 
       function geocodeAddress(geocoder, resultsMap) {
         var address = document.getElementById('address').value;
         geocoder.geocode({'address': address}, function(results, status) {
-          console.log(results)
+          // console.log(results)
           if (status === 'OK') {
-            
-            resultsMap.setCenter(results[0].geometry.location);
-            
+
+            var marks = (results[0].formatted_address)
+            console.log(marks)
+            loc.push(marks);
+
+            resultsMap.setCenter(results[0].geometry.location); 
+
             var marker = new google.maps.Marker({
               map: resultsMap,
               animation: google.maps.Animation.DROP,
               position: results[0].geometry.location
+
             });
+
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
           }
         });
       }
 
-
     </script>
+      
+
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCWVcCpP5giiEGCCaykXsy-qCiVC9kS_m8&callback=initMap">
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWVcCpP5giiEGCCaykXsy-qCiVC9kS_m8&callback=initMap">
-    </script>
+    
 
   </body>
 </html>
