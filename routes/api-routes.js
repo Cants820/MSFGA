@@ -6,10 +6,10 @@ module.exports = function (app) {
 
   // GET route for getting all of the dbName
   app.get("/users", function (req, res) {
-    // db.Volunteer.findAll({})
-    //   .then(function (dbVolunteer) {
-    //     res.json(dbVolunteer);
-    //   });
+  //   db.Volunteer.findAll({})
+  //     .then(function (dbVolunteer) {
+  //       res.json(dbVolunteer);
+  //     });
   // console.log("Hello world");
   });
 

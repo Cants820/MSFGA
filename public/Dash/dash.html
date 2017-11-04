@@ -1,0 +1,156 @@
+<html>
+<head>
+    <link href="Main.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="jquery-1.10.2.min.js"></script>
+    <script src="JQUERY%20Main.js"></script>
+
+
+<style>
+  
+  #map {
+    height: 75%;
+    width: 100%;
+    margin: 0 auto;
+    /*margin-bottom: 2cm;*/
+  }
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+</style>    
+</head>
+
+<body>
+<div id="map"></div><br>
+<!-- <div id="floating-panel">
+    <input id="address" type="textbox" value="san francisco">
+    <input id="submit" type="button" value="Geocode">
+</div> -->
+
+<div id="MenuIcon">
+    <div id="MenuLine"></div>
+</div>
+
+
+<div id="event-list">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Baker Beach Cleanup</h3>
+      </div>
+      <div class="panel-body">
+        <p>Date: 11/24/2017</p>
+        <p>Sudah merupakan fakta bahwa seorang pembaca akan terpengaruh oleh isi tulisan dari sebuah halaman saat ia melihat tata letaknya. Maksud penggunaan Lorem Ipsum adalah karena ia kurang lebih memiliki penyebaran huruf yang normal, ketimbang menggunakan kalimat seperti "Bagian isi disini, bagian isi disini", sehingga ia seolah menjadi naskah Inggris yang bisa dibaca. Banyak paket</p>
+      </div>
+    </div> 
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Packed Lunches for homeless people</h3>
+      </div>
+      <div class="panel-body">
+        <p>Date: 11/22/2017</p>
+        <p>Sudah merupakan fakta bahwa seorang pembaca akan terpengaruh oleh isi tulisan dari sebuah halaman saat ia melihat tata letaknya. Maksud penggunaan Lorem Ipsum adalah karena ia kurang lebih memiliki penyebaran huruf yang normal, ketimbang menggunakan kalimat seperti "Bagian isi disini, bagian isi disini", sehingga ia seolah menjadi naskah Inggris yang bisa dibaca. Banyak paket</p>
+      </div>
+    </div> 
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Another Event</h3>
+      </div>
+      <div class="panel-body">
+        <p>Date: 11/22/2017</p>
+        <p>Sudah merupakan fakta bahwa seorang pembaca akan terpengaruh oleh isi tulisan dari sebuah halaman saat ia melihat tata letaknya. Maksud penggunaan Lorem Ipsum adalah karena ia kurang lebih memiliki penyebaran huruf yang normal, ketimbang menggunakan kalimat seperti "Bagian isi disini, bagian isi disini", sehingga ia seolah menjadi naskah Inggris yang bisa dibaca. Banyak paket</p>
+      </div>
+    </div> 
+
+</div>
+
+        
+<div id="MainMenu">
+    <div id="logo">
+        <img src="resqqssff.png" height="75px" width="75px"/>
+    </div>
+    <ul>
+        <li>Profile<div class="line"></div></li>
+        <li>View Map<div class="line"></div></li>
+        <li>Create Event<div class="line"></div></li>
+        <li>Add an issue (coming Soon)<div class="line"></div></li>
+        <li>Logout<div class="line"></div></li>
+    </ul>
+    <div id="close">
+        <img src="Close.png" height="30px" width="30px"/>
+    </div>
+</div>
+
+
+
+
+<script>
+
+
+      var loc = [];
+      console.log(loc)
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: {lat: 37.7749, lng: -122.431297}
+        });
+        var geocoder = new google.maps.Geocoder();
+
+
+        document.getElementById('submit').addEventListener('click', function(event) {
+          event.preventDefault()
+          geocodeAddress(geocoder, map);
+        });
+
+        var newAutocomplete = new google.maps.places.Autocomplete(document.getElementById('address'),{types: ['geocode']});
+          // autocomplete.setComponentRestrictions({ 'country': ['us'] });
+          newAutocomplete.addListener('place_changed', () => {
+            // self.zone.run(() => {
+              // this._address = autocomplete.getPlace();
+              console.log(newAutocomplete);
+            // });
+          });
+      }
+
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          // console.log(results)
+          if (status === 'OK') {
+
+            var marks = (results[0].formatted_address)
+            console.log(marks)
+            loc.push(marks);
+
+            resultsMap.setCenter(results[0].geometry.location); 
+
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              animation: google.maps.Animation.DROP,
+              position: results[0].geometry.location
+
+            });
+
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+
+    </script>
+      
+
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCWVcCpP5giiEGCCaykXsy-qCiVC9kS_m8&callback=initMap">
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+
+    </body>
+</html>
