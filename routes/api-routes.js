@@ -2,7 +2,7 @@ var db = require("../models");
 
 // Routes
 // =============================================================
-module.exports = function (app) {
+module.exports = function (app, passport) {
 
   // GET route for getting all of the dbName
   app.get("/user/Volunteer/", function (req, res) {
