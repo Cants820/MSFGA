@@ -5,6 +5,9 @@ var flash = require("connect-flash");
 var morgan = require("morgan");
 var cookieParser = require("cookie-Parser");
 var session = require("express-session");
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -33,6 +36,7 @@ app.use(bodyParser.json({
 app.use(session({secret: 'nottellingyou'}));
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use(flash()); // use connect-flash for flash messages stored in session
 // Static directory
 app.use(express.static("public"));
@@ -40,7 +44,7 @@ app.use(express.static("public"));
 // Routes
 // =============================================================
 require("./routes/api-routes.js")(app, passport);
-require("./routes/html-routes.js")(app);
+require("./routes/html-routes.js")(app, passport);
 
 
 
