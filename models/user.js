@@ -1,5 +1,5 @@
 var Sequelize = require("sequelize");
-var bcrypt = require("bcrypt-nodejs");
+
 
 const saltRounds = 10;
 const myPlaintextPassword = 's0/\/\P4$$w0rD';
@@ -14,13 +14,6 @@ module.exports = function (Sequelize, DataTypes, User) {
         len: [8, 20]
       }
     },
-    // password: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   validate: {
-    //     len: [8, 100]
-    //   }
-    // },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -28,16 +21,17 @@ module.exports = function (Sequelize, DataTypes, User) {
         isEmail: true
       }
     },
-    points: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-      validate: {
-         isNumeric: true
-      }
+    eventsAttending: {
+      type: DataTypes.STRING,
+      allowNull: true,
     }
   });
-  
+  User.associate = function (models) {
+    User.belongsToMany(models.Events, {
+      through: {
+        model: models.UserEvents
+      }
+    });
+  }
   return User;
-};
-
-//test
+}

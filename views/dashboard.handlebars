@@ -1,0 +1,48 @@
+
+<div id="map"></div><br>
+<!-- <div id="floating-panel">
+    <input id="address" type="textbox" value="san francisco">
+    <input id="submit" type="button" value="Geocode">
+</div> -->
+
+<div id="MenuIcon">
+    <div id="MenuLine"></div>
+</div>
+
+
+<h1>All Events</h1>
+
+<ul>
+  {{#each events}}
+    {{!-- <li>
+      <h2>{{eventName}}</h2>
+      <p>{{eventDate}}</p>
+      <p>{{location}}</p>
+      <p>{{description}}</p>
+      <button class="event-status" data-id="{{this.id}}" data-newevent="1">Attend?</button> {{!-- FIGURE OUT EVENT LOGIC WITH JOE --}}
+    </li> --}}
+  {{/each}}
+</ul>
+
+
+
+
+<div id="MainMenu">
+    <div id="logo">
+        <img src="assets/images/resqqssff.png" height="75px" width="75px"/>
+    </div>
+    <ul>
+        <li>Profile<div class="line"></div></li>
+        <li>View Map<div class="line"></div></li>
+        <li><a href="user/:id/event/new">Create Event</a><div class="line"></div></li>
+        
+        <li>View My Events<div class="line"></div></li>
+        <li>Add an issue (coming Soon)<div class="line"></div></li>
+        <li>Logout<div class="line"></div></li>
+    </ul>
+    <div id="close">
+        <img src="assets/images/close.png" height="30px" width="30px"/>
+    </div>
+</div>
+
+<script src="assets/js/googlemaps.js"></script>

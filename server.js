@@ -6,7 +6,7 @@ var morgan = require("morgan");
 var cookieParser = require("cookie-Parser");
 var session = require("express-session");
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-
+var exphbs = require("express-handlebars");
 
 // Sets up the Express App
 // =============================================================
@@ -17,6 +17,9 @@ var PORT = process.env.PORT || 8080;
 var db = require("./models");
 
 require('./config/passport')(passport);
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 app.use(morgan('dev'));
 app.use(cookieParser());

@@ -1,4 +1,5 @@
 var path = require("path");
+var exphbs = require("express-handlebars");
 
 // Routes
 // =============================================================
@@ -8,8 +9,8 @@ module.exports = function (app, passport) {
 
   // index route loads view.html(sing in pg)
   app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/index.html"));
-  });
+    res.render("index", exphbs);
+  })
   // create route loads create.html
   app.get("/create", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/create.html"));
@@ -19,12 +20,8 @@ module.exports = function (app, passport) {
     res.sendFile(path.join(__dirname, "../public/view.html"));
   });
 
-  app.get("/register", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/register.html"));
-  });
-
-  app.get('/profile', function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/profile.html"));
+  app.get('/dashboard', function (req, res) {
+    res.sendFile(path.join(__dirname, "../views/partials/dashboard"));
   });
   app.get('/logout', function (req, res) {
     req.logout();
@@ -35,7 +32,7 @@ module.exports = function (app, passport) {
   // the callback after google has authenticated the user
   app.get('/auth/google/callback',
     passport.authenticate('google', {
-      successRedirect: '/profile',
+      successRedirect: '/dashboard',
       failureRedirect: '/auth/google'
     }));
 

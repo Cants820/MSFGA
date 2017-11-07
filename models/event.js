@@ -2,8 +2,8 @@ var Sequelize = require("sequelize");
 
 
 module.exports = function (Sequelize, DataTypes) {
-  var Volunteer = Sequelize.define("Volunteer", {
-    activity: {
+  var Events = Sequelize.define("Events", {
+    activityName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -18,15 +18,24 @@ module.exports = function (Sequelize, DataTypes) {
     location: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-
+      Longtitude: {
+        type: DataTypes.STRING
+      },
+      Latitude: {
+        type: DataTypes.STRING
       }
     },
     date: {
       type: DataTypes.DATE,
-      
-    },
+    }
 
   });
-  return Volunteer;
-};
+  Events.associate = function (models) {
+    Events.belongsToMany(models.User, {
+      through: {
+        model: models.UserEvents
+      }
+    });
+  }
+  return Events;
+}
