@@ -13,47 +13,47 @@ module.exports = function (app, passport, exphbs) {
   })
   // GET route for getting all of the dbName
   app.get("/users", function (req, res) {
-    // db.Volunteer.findAll({})
-    //   .then(function (dbVolunteer) {
-    //     res.json(dbVolunteer);
-    //   });
-  // console.log("Hello world");
+    db.User.findAll({})
+    .then(function(User) {
+      res.json(User);
+      console.log("user");
+    });
   });
 
   // Get route for returning dbName of a specific category
   app.get("/user/:id/edit", function (req, res) {
-    // db.dbName.findAll({
-    //   where: {
-    //     activity: req.params.activity
-    //   }
-    // })
-    //   .then(function (dbVolunteer) {
-    //     res.json(dbVolunteer);
-    //   });
-    // console.log("Hello where");
+    db.User.update(req.body,
+    {
+      where: {
+        id: req.params.id
+      }
+      }).then(function(User) {
+        res.json(User);
+      });
   });
 
   // Get rotue for retrieving a single post
-  app.get("/user/:id/", function (req, res) {
-    // db.Volunteer.findOne({
-    //   where: {
-    //     id: req.params.id
-    //   }
-    // })
-    //   .then(function (dbVolunteer) {
-    //     res.json(dbVolunteer);
-    //   });
-    // console.log("Hello world");
+  app.get("/user/:id/", function (req, res) { //for profile page
+    db.User.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(User) {
+      res.json(User);
+    });
+  });
+
+  app.post("/user/:id/event", function (req, res) {
+
   });
 
   app.get("/user/:id/events", function (req, res) {
 
-    // console.log("Hello world");
   });
 
   app.get("/user/:id/events/:eventid", function (req, res) {
 
-    // console.log("Hello world");
+
   });
 
   app.get("/user/:id/event/new", function (req, res) {
@@ -61,26 +61,25 @@ module.exports = function (app, passport, exphbs) {
     
   });
 
-  app.get("/events", function (req, res) {
-
-    // console.log("Hello world");
+   app.get("/events", function(req,res) {//works and tested
+    db.Events.findAll({}).then(function (tableName){
+      res.json(tableName);
+      console.log(res);
+    });
   });
 
   app.get("/events/:id", function (req, res) {
-
-        // console.log("Hello world");
-  });
-
-  app.post("/users", function (req, res) {
-
-  });
-
-  app.post("/user/:id/event", function (req, res) {
-
+    db.Events.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(Events) {
+      res.json(Events);
+    });
   });
 
  
-  app.post("/event/create", function (req, res) {
+  app.post("/event/create", function (req, res) {//re-factor
     console.log(req.body);
     db.Volunteer.create({
       activity: req.body.activity,
@@ -105,19 +104,6 @@ module.exports = function (app, passport, exphbs) {
   });
 
   // PUT route for updating dbName
-  app.put("/user/:id/", function (req, res) {
-    // db.Post.update(req.body,
-    //   {
-    //     where: {
-    //       id: req.body.id
-    //     }
-    //   })
-    //   .then(function (dbVolunteer) {
-    //     res.json(dbVolunteer);
-    //   });
-    // console.log("Hello world");
-  });
-
   app.put("/user/:id/event/:eventid/join", function (req, res) {
 
 
