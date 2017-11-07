@@ -5,11 +5,16 @@ body {
 }
 
 #MenuIcon {
-  height: 25px;
-  width: 50px;
-  position: fixed;
-  top: 50;
-  right: 50;
+  height: 25px !important;
+  width: 50px !important;
+  position: relative !important;
+  top: 10% !important;
+  /*margin-top: 2cm;*/
+  /*right: 50%;*/
+  
+  float:right !important;
+  z-index: 30 !important;
+  
 }
 
 #MenuIcon:hover {
