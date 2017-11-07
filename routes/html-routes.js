@@ -8,25 +8,25 @@ module.exports = function (app, passport) {
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
   // index route loads view.html(sing in pg)
-  app.get("/", function (req, res) {
-    res.render("index", exphbs);
-  })
-  // create route loads create.html
-  app.get("/create", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/create.html"));
-  });
+  // app.get("/", function (req, res) {
+  //   res.render("index", exphbs);
+  // })
+  // // create route loads create.html
+  // app.get("/create", function (req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/create.html"));
+  // });
 
-  app.get("/view", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/view.html"));
-  });
+  // app.get("/view", function (req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/view.html"));
+  // });
 
-  app.get('/dashboard', function (req, res) {
-    res.sendFile(path.join(__dirname, "../views/partials/dashboard"));
-  });
-  app.get('/logout', function (req, res) {
-    req.logout();
-    res.redirect('/');
-  });
+  // app.get('/dashboard', function (req, res) {
+  //   res.sendFile(path.join(__dirname, "../views/partials/dashboard"));
+  // });
+  // app.get('/logout', function (req, res) {
+  //   req.logout();
+  //   res.redirect('/');
+  // });
   app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
   // the callback after google has authenticated the user
