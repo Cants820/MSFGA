@@ -39,3 +39,5 @@ module.exports = function (Sequelize, DataTypes) {
   }
   return Events;
 }
+
+//
