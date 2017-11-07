@@ -19,6 +19,10 @@
         margin: 0;
         padding: 0;
       }
+
+      #address {
+        width: 500px;
+      }
     </style>
   </head>
   <body>
@@ -32,35 +36,47 @@
 
 
       var loc = [];
-      console.log(loc)
+      var placeId = ["ChIJIQBpAG2ahYAR_6128GcTUEo", "ChIJp3CqeRd-j4ARYI0i8e_kGKY", "ChIJY_dFYHKHhYARMKc772iLvnE"];
+      // console.log(loc)
+
+
+     
 
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 12,
           center: {lat: 37.7749, lng: -122.431297}
         });
-        var geocoder = new google.maps.Geocoder();
+        var geocoder = new google.maps.Geocoder;
+        var infowindow = new google.maps.InfoWindow;
 
 
         document.getElementById('submit').addEventListener('click', function(event) {
           event.preventDefault()
-          geocodeAddress(geocoder, map);
+          geocodeAddress(geocoder, map, infowindow);
+          // console.log(geocoder)
+          // console.log(infowindow)
+          // console.log(map)
         });
 
         var newAutocomplete = new google.maps.places.Autocomplete(document.getElementById('address'),{types: ['geocode']});
-          // autocomplete.setComponentRestrictions({ 'country': ['us'] });
+          
           newAutocomplete.addListener('place_changed', () => {
-            // self.zone.run(() => {
-              // this._address = autocomplete.getPlace();
-              console.log(newAutocomplete);
-            // });
+            
           });
       }
 
-      function geocodeAddress(geocoder, resultsMap) {
+      function geocodeAddress(geocoder, resultsMap, infowindow) {
         var address = document.getElementById('address').value;
         geocoder.geocode({'address': address}, function(results, status) {
-          // console.log(results)
+
+          // var latlng = [(results[0].geometry.bounds.f.f),(results[0].geometry.bounds.b.b)]
+          // console.log(latlng);
+
+          var id = (results[0].place_id)
+          placeId.push(id)
+
+
           if (status === 'OK') {
 
             var marks = (results[0].formatted_address)
@@ -73,8 +89,12 @@
               map: resultsMap,
               animation: google.maps.Animation.DROP,
               position: results[0].geometry.location
-
             });
+
+            infowindow.setContent(results[0].formatted_address);
+            infowindow.open(map, marker); 
+
+
 
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
