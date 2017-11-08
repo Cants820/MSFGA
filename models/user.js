@@ -24,7 +24,11 @@ module.exports = function (Sequelize, DataTypes, User) {
     eventsAttending: {
       type: DataTypes.STRING,
       allowNull: true,
-    }
+    },
+    points: {
+      type: DataTypes.INTEGER,
+      defaultValue: 10,
+    },
   });
   User.associate = function (models) {
     User.belongsToMany(models.Events, {

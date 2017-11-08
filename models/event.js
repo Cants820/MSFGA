@@ -1,6 +1,4 @@
 var Sequelize = require("sequelize");
-
-
 module.exports = function (Sequelize, DataTypes) {
   var Events = Sequelize.define("Events", {
     activityName: {
@@ -17,18 +15,16 @@ module.exports = function (Sequelize, DataTypes) {
     },
     location: {
       type: DataTypes.STRING,
-      allowNull: false,
-      Longtitude: {
-        type: DataTypes.STRING
-      },
-      Latitude: {
-        type: DataTypes.STRING
-      }
+      allowNull: true,
+    },
+    placeId: {
+      type: DataTypes.STRING,
+      allowNull: true
     },
     date: {
       type: DataTypes.DATE,
+      defaultValue: Sequelize.NOW,
     }
-
   });
   Events.associate = function (models) {
     Events.belongsToMany(models.User, {

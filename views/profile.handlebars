@@ -3,37 +3,43 @@
 </div>
 
 
-<div id="map"></div><br>
-<!-- <div id="floating-panel">
-    <input id="address" type="textbox" value="san francisco">
-    <input id="submit" type="button" value="Geocode">
-</div> -->
+
+<div>
+  
+  <center>
+    <h1> Profile Page </h1>
+    <img src="http://via.placeholder.com/150x150">
+
+    <p>Name:{{this.userName}}</p>
+
+    <p>Points:{{this.points}}</p>
+    
+    {{!-- my hosted events --}}
+
+    <ul>
+      {{#each events}}
+        <li>
+          <h2>{{eventName}}</h2>
+          <p>{{eventDate}}</p>
+          <p>{{location}}</p>
+          <p>{{description}}</p>
+          <button class="event-status" data-id="{{this.id}}" data-newevent="1">Attend?</button> {{!-- FIGURE OUT EVENT LOGIC WITH JOE --}}
+        </li>
+      {{/each}}
+    </ul>
 
 
 
+  </center>
 
-<h1>All Events</h1>
-
-<ul>
-  {{#each events}}
-{{!--     <li>
-      <h2>{{eventName}}</h2>
-      <p>{{eventDate}}</p>
-      <p>{{location}}</p>
-      <p>{{description}}</p>
-      <button class="event-status" data-id="{{this.id}}" data-newevent="1">Attend?</button> {{!-- FIGURE OUT EVENT LOGIC WITH JOE --}}
-    </li> --}}
-  {{/each}}
-</ul>
-
-
+</div>
 
 
 <div id="MainMenu">
   <br><br><br>
     <div id="logo"><img src="assets/images/resqqssff.png" height="75px" width="75px"/></div>
     <ul>
-        <li>Profile<div class="line"></div></li>
+        <li><a href="/profile">Profile</a><div class="line"></div></li>
         <li><a href="/dashboard">View Map</a><div class="line"></div></li>
         <li><a href="user/:id/event/new">Create Event</a><div class="line"></div></li>
         <li><a href="user/:id/events">View my Events</a><div class="line"></div></li>
@@ -43,4 +49,3 @@
     </ul>
 
 </div>
-

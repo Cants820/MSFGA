@@ -9,7 +9,10 @@ module.exports = function (app, passport, exphbs) {
     res.render("index", exphbs);
   })
   app.get("/dashboard", function (req, res) {
-    res.render("dashboard", exphbs);
+    res.render("dashboard", {event: "data here"});
+  })
+  app.get("/profile", function(req, res) {
+    res.render("profile", exphbs);
   })
   // GET route for getting all of the dbName
   app.get("/users", function (req, res) {
