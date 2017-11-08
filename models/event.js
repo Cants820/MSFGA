@@ -17,10 +17,6 @@ module.exports = function (Sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    placeId: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
     date: {
       type: DataTypes.DATE,
       defaultValue: Sequelize.NOW,

@@ -1,21 +1,20 @@
-$("#register-volunteer").on("click", function (event) {
+$("#register-event").on("click", function (event) {
   // Make sure to preventDefault on a submit event.
   console.log("Button Click");
   event.preventDefault();
   console.log(event);
-  var newVolunteer = {
-    activity: $("#activity-name").val().trim(),
-    description: $("#description").val().trim(),
-    location: $("#location").val().trim(),
-    date: $("#date").val().trim()
+  var newEvent = {
+    activityName: $("#event-name").val().trim(),
+    description: $("#event-description").val().trim(),
+    location: $("#event-location").val().trim(),
+    date: $("#event-date").val().trim()
   };
-  console.log(newVolunteer);
+  console.log(newEvent);
   // Send the POST request.
-  $.ajax("/event/create", {
+  $.ajax("/events/new", {
     type: "Post",
-    data: newVolunteer
-  }).then(
-    function () {
+    data: newEvent
+  }).then(function () {
       console.log("created new Volunteer");
       // Reload the page to get the updated list
       location.reload();

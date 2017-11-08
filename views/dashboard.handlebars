@@ -2,31 +2,25 @@
     <div id="MenuLine"></div>
 </div>
 
-
 <div id="map"></div><br>
-<!-- <div id="floating-panel">
-    <input id="address" type="textbox" value="san francisco">
-    <input id="submit" type="button" value="Geocode">
-</div> -->
 
-
-
-
-<h1>All Events</h1>
-
-<ul>
-  {{#each events}}
-{{!--     <li>
-      <h2>{{eventName}}</h2>
-      <p>{{eventDate}}</p>
-      <p>{{location}}</p>
-      <p>{{description}}</p>
-      <button class="event-status" data-id="{{this.id}}" data-newevent="1">Attend?</button> {{!-- FIGURE OUT EVENT LOGIC WITH JOE --}}
-    </li> --}}
-  {{/each}}
-</ul>
-
-
+<div class="container">
+  <div>
+    <h1>All Events</h1>
+    {{#each events}}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{this.activity}}</h3>
+      </div>
+      <div class="panel-body">
+        {{this.date}}<br>
+        {{this.location}}<br>
+        {{this.description}}<br>
+      </div>
+    {{/each}}
+    </div>
+  </div>
+</div>
 
 
 <div id="MainMenu">
