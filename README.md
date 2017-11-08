@@ -11,13 +11,13 @@ Users can create an account via their Google account. If an account already exis
 
 ##Technologies Used
   
-  *Frontend
+  * Frontend
     * HTML5
     * Javascript
     * Jquery
     * CSS
   
-  *Backend
+  * Backend
     * Node.js 
     * Sequelize
     * MySQL    
