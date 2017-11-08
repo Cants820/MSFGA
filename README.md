@@ -2,9 +2,12 @@
 
 #Overview
 
-#Getting Started
+#Getting Started[I'm an inline-style link](https://github.com/samuelboediono/MSFGA)
 
 #Technologies Used
+  Front End:
+
+
 
 #Project Highlights
 
