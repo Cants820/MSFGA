@@ -11,9 +11,11 @@
 #Version Control
 
 #Contributors
+
 Alex Zhen
 Sam Boedino
 James Reantillo
 Joseph Cantos
+
 #License
 MIT License
