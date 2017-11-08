@@ -33,29 +33,31 @@ module.exports = function (app, passport, exphbs) {
     })
 
   })
-  app.get("/profile/", function(req, res) {
-
+  app.get("/profile/:id", function(req, res) {
+    console.log("=============");
+    console.log(res);
+    console.log("============="); 
     var userArray = [];
 
-    // db.User.findAll({
-    //   where: {
-    //     // id:id
-    //   }
-    // }).then(function(users){
+    db.User.findAll({
+      where: {
+        id:id
+      }
+    }).then(function(users){
 
-    //   for (var i =0; i < users.length;i++){
+      for (var i =0; i < users.length;i++){
 
-    //     var userObj = {
-    //       id: users[i].id,
-    //       userName: user[i].userName,
-    //       email: user[i].email,
-    //       points: user[i].points,
-    //     }
-    //     userArray.push(userObj);
-    //   }
-    //   res.render("profile", {users:userArray});
+        var userObj = {
+          id: users[i].id,
+          userName: user[i].userName,
+          email: user[i].email,
+          points: user[i].points,
+        }
+        userArray.push(userObj);
+      }
+      res.render("profile", {users:userArray});
 
-    // })
+    })
 
 
 
@@ -182,4 +184,11 @@ module.exports = function (app, passport, exphbs) {
         res.json(dbEvent);
       });
   });
+
+  app.get("/logout", function(req, res) {
+    req.logout();
+    res.redirect("/");
+  });
+
+
 };
