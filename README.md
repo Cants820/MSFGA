@@ -10,14 +10,14 @@ Users can create an account via their Google account. If an account already exis
 
 #Technologies Used
   *Frontend:
-    ⋅-HTML5
-    -Javascript
-    ⋅-Jquery
-    ⋅-CSS
+    *⋅HTML5
+    *Javascript
+    *Jquery
+    *CSS
   *Backend:
-    ⋅-Node.js 
-    ⋅-Sequelize
-    ⋅-MySQL    
+    *Node.js 
+    *Sequelize
+    *MySQL    
 
 #Project Highlights
 Authentication
