@@ -2,6 +2,7 @@
 
 #Overview
 
+We created resQSF because there is a dire need to improve our beautiful city. The government isn't doing anything and tech companies that generate billions are evading taxes left and right. For this reason, we banded together to develop an app that can let us improve be city ourselves. With ResQSF, users can organize and sign up for volunteer events
 
 #Getting Started
 [Project Github Link:](https://github.com/samuelboediono/MSFGA)
@@ -11,7 +12,7 @@ Users can create an account via their Google account. If an account already exis
 ##Technologies Used
   
   * Frontend
-    * ⋅HTML5
+    * HTML5
     * Javascript
     * Jquery
     * CSS
