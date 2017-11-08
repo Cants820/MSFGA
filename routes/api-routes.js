@@ -9,6 +9,67 @@ module.exports = function (app, passport, exphbs) {
     res.render("index", exphbs);
   })
   app.get("/dashboard", function (req, res) {
+ var loc = [];
+          var placeId = [];
+          var globalResult; 
+          // console.log(globalResult)
+         
+          function initMap() {
+            
+            myLatLng = {lat: 37.7749, lng: -122.431297}
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 12,
+              center: myLatLng
+            });
+            var geocoder = new google.maps.Geocoder;
+            var infowindow = new google.maps.InfoWindow;
+            document.getElementById('submit').addEventListener('click', function(event) {
+              event.preventDefault()
+              geocodeAddress(geocoder, map, infowindow);
+              // console.log(geocoder)
+              // console.log(infowindow)
+              // console.log(map)
+              
+            });
+            var newAutocomplete = new google.maps.places.Autocomplete(document.getElementById('address'),{types: ['geocode']});
+              
+              newAutocomplete.addListener('place_changed', () => {
+                
+              });
+          }
+          function geocodeAddress(geocoder, resultsMap, infowindow) {
+            var address = document.getElementById('address').value;
+            geocoder.geocode({'address': address}, function(results, status) {
+              // var latlng = [(results[0].geometry.bounds.f.f),(results[0].geometry.bounds.b.b)]
+              // console.log(latlng);
+              globalResult = results; 
+              // console.log(globalResult)
+              var id = (globalResult[0].place_id)
+              placeId.push(id)
+              
+              if (status === 'OK') {
+                var marks = (results[0].formatted_address)
+                console.log(marks)
+                loc.push(marks);
+                resultsMap.setCenter(results[0].geometry.location); 
+                var marker = new google.maps.Marker({
+                  map: resultsMap,
+                  animation: google.maps.Animation.DROP,
+                  position: results[0].geometry.location
+                }); 
+                google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent(results[0].formatted_address);
+                infowindow.open(map, this);
+            });
+              } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+              }
+            });
+          }
+        
+
+
+
 
     var eventsArray = [];
 
@@ -33,30 +94,27 @@ module.exports = function (app, passport, exphbs) {
     })
 
   })
-  app.get("/profile/:id", function(req, res) {
-    console.log("=============");
-    console.log(res);
-    console.log("============="); 
+  app.get("/profile/", function(req, res) {
+    
     var userArray = [];
 
-    db.User.findAll({
-      where: {
-        id:id
-      }
-    }).then(function(users){
-
-      for (var i =0; i < users.length;i++){
-
-        var userObj = {
-          id: users[i].id,
-          userName: user[i].userName,
-          email: user[i].email,
-          points: user[i].points,
+    db.User.findAll({})
+      .then(function(user)
+      {
+        // console.log(user)
+        for (var i=0; i < user.length;i++){
+          
+          var userObj = {
+            id: user[i].id,
+            userName: user[i].userName,
+            email: user[i].email,
+            points: user[i].points,
+          }
+          
+          userArray.push(userObj);
         }
-        userArray.push(userObj);
-      }
-      res.render("profile", {users:userArray});
-
+        console.log(userArray);
+        res.render("profile", {users:userArray});
     })
 
 
@@ -114,19 +172,6 @@ module.exports = function (app, passport, exphbs) {
 
   //get users id with events
   app.get("/user/:id/events/new", function (req, res) {
-    
-    // var id = req.params.id;
-
-    // db.User.findOne({
-    //   include: [{
-    //     model: Project,
-    //     through: {
-    //       attributes: ["","",""],
-    //       where: {completed:true}
-    //     }
-    //   }]
-    //  });
-          
   });
 
   app.get("/events/:id/users/:id", function (req,res) {
@@ -164,7 +209,7 @@ module.exports = function (app, passport, exphbs) {
   app.post("/event/create", function (req, res) {//re-factor
     console.log(req.body);
     db.Events.create({
-      activity: req.body.activity,
+      activityName: req.body.activityName,
       description: req.body.description,
       location: req.body.location,
       date: req.body.date
