@@ -8,7 +8,7 @@ var markers = [
 ];
 
 var date = [
-    ['2017-12-12 07:00:00', '2017-12-13 06:30:00']
+    ['2017-12-12 07:00:00'], ['2017-12-13 06:30:00']
 ]
 
 
@@ -31,7 +31,7 @@ function initMap() {
             return function() {
                 infowindow.setContent('<div><strong>' + 'Event: ' + activity[i][0] + '</strong><br>' +
                 markers[i][0] + '<br>' +
-                'Date: ' + date[i] + '</div>');
+                'Date: ' + date[i][0] + '</div>');
                 infowindow.open(map, marker);
             }
         })(marker, i));
