@@ -68,10 +68,11 @@ body:before {
 #login:after {
   content: " ";
   display: block;
-  background: rgba(0, 0, 0, 0.1);
+  background: red/*rgba(0, 0, 0, 0.1)*/;
   position: absolute;
   width: 100px;
   height: 30px;
+  opacity: .7;
 }
 
 #login:before {
@@ -84,7 +85,7 @@ body:before {
 }
 
 #login:after {
-  margin-top: -156px;
+  margin-top: -145px;
   margin-left: 240px;
   -webkit-transform: rotate(32deg);
   -moz-transform: rotate(32deg);
@@ -310,7 +311,3 @@ ul li:hover .line {
 #close:hover {
   cursor: pointer;
 }
-
-
-
-
