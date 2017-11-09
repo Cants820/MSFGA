@@ -29,6 +29,7 @@ Authentication
 <img src="/public/assets/images/cloudappMSFGA.gif">
 
 Sidebar
+
 <img src="/public/assets/images/navbar.PNG">
 
 Google Maps API integrated with Sequelize
