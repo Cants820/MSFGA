@@ -1,6 +1,6 @@
 ##MSFGA
 
-![Alt text] (/public/assets/images/resqqssff.png?raw=true)
+<img src="/public/assets/images/resqqssff.png">
 
 #Overview
 
