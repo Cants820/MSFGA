@@ -1,5 +1,5 @@
 ##MSFGA
-![Screenshot] (https://user-images.githubusercontent.com/30422279/32581152-7f9ac098-c49d-11e7-8ec7-c4fc29d78d81.PNG)
+![ScreenShot] (https://user-images.githubusercontent.com/30422279/32581152-7f9ac098-c49d-11e7-8ec7-c4fc29d78d81.PNG)
 #Overview
 
 We created resQSF because there is a dire need to improve our beautiful city. The government isn't doing anything and tech companies that generate billions are evading taxes left and right. For this reason, we banded together to develop an app that can let us improve be city ourselves. With ResQSF, users can organize and sign up for volunteer events
