@@ -1,6 +1,6 @@
 ##MSFGA
 
-![ScreenShot] (https://{user-images.githubusercontent.com/30422279/32581152-7f9ac098-c49d-11e7-8ec7-c4fc29d78d81.PNG})
+![ScreenShot] (/public/assets/images/resqqssff.png)
 
 #Overview
 
