@@ -26,11 +26,11 @@ Users can create an account via their Google account. If an account already exis
 
 ##Project Highlights
 Authentication
-
+<img src="/public/assets/images/cloudappMSFGA.gif">
 Side-bar
 
 Google Maps API integrated with Sequelize
-
+<img src="/public/assets/images/body.PNG">
 
 
 ##Version Control
