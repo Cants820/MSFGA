@@ -44,7 +44,7 @@ This is version 2 of RESQSF. [Project Github Link:](https://github.com/samuelboe
 
 * Alex Zhen [https://github.com/fathao](https://github.com/fathao)
 * Sam Boedino [https://github.com/samuelboediono](https://github.com/samuelboediono)
-* James Reantillo [I'm an inline-style link](https://www.google.com)
+* James Reantillo [https://github.com/jamesreantillo](https://github.com/jamesreantillo)
 * Joseph Cantos [https://github.com/Cants820](https://github.com/Cants820)
 * Sahil Najeeb [https://github.com/Sahil-N](https://github.com/Sahil-N)
 
