@@ -49,4 +49,4 @@ This is version 2 of RESQSF. [Project Github Link:](https://github.com/samuelboe
 * Sahil Najeeb [https://github.com/Sahil-N](https://github.com/Sahil-N)
 
 # License
-MIT License
+MIT License [https://mit-license.org/](https://mit-license.org/)
