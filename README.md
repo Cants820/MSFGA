@@ -40,7 +40,7 @@ Google Maps API integrated with Sequelize
 
 This is version 2 of RESQSF. [Project Github Link:](https://github.com/samuelboediono/MSFGA)
 
-##Contributors
+# Authors
 
 * Alex Zhen [https://github.com/fathao](https://github.com/fathao)
 * Sam Boedino [https://github.com/samuelboediono](https://github.com/samuelboediono)
