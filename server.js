@@ -8,10 +8,30 @@ var session = require("express-session");
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var exphbs = require("express-handlebars");
 
+var mysql = require("mysql");
+var connection;
 // Sets up the Express App
 // =============================================================
 var app = express();
 var PORT = process.env.PORT || 8080;
+
+if (process.env.JAWSDB_URL) {
+  connction = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+  connection = mysql.createConnection({
+    host:'localhost',
+    user:'root',
+    password:'root',
+    database:'MSFGA'
+
+  })
+}
+
+connection.connect();
+
+
+
+
 
 // Requiring our models for syncing
 var db = require("./models");
@@ -61,10 +81,3 @@ db.sequelize.sync({
     console.log("App listening on PORT " + PORT);
   });
 });
-
-
-// npm install mysql2 - g sequelize - cli sequelize
-
-// sequelize init: config
-
-// sequelize init: models
