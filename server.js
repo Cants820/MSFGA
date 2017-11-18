@@ -15,19 +15,19 @@ var connection;
 var app = express();
 var PORT = process.env.PORT || 8080;
 
-if (process.env.JAWSDB_URL) {
-  connction = mysql.createConnection(process.env.JAWSDB_URL);
-} else {
-  connection = mysql.createConnection({
-    host:'localhost',
-    user:'root',
-    password:'root',
-    database:'MSFGA'
+// if (process.env.JAWSDB_URL) {
+//   connction = mysql.createConnection(process.env.JAWSDB_URL);
+// } else {
+//   connection = mysql.createConnection({
+//     host:'localhost',
+//     user:'root',
+//     password:'root',
+//     database:'MSFGA'
 
-  })
-}
+//   })
+// }
 
-connection.connect();
+// connection.connect();
 
 
 
